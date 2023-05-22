@@ -5,6 +5,7 @@ const Todo = require("../Models/TodoModel");
 const app = express();
 
 app.use(express.json());
+app.use(express.urlencoded({extended:false}))
 
 // app.get("/", (req, res) => {
 //   res.send(`<h1>hello world</h1>`);
@@ -57,17 +58,36 @@ app.post("/todo", async (req, res) => {
 app.put("/todo/:id",async(req,res)=>{
 try{
     const {id}=req.params
-    const todo=await Todo.findByIDAndUpdate(id,req.body)
+    const todo=await Todo.findByIdAndUpdate(id,req.body)
     //we cannot find any product in database
     if(!todo){
-        return res.status(404).json({ message: "cannot find any product" });
+        return res.status(404).json({ message: `cannot find any todo with id ${id}` });
     }
-    res.status(200).json(todo)
+    const updatedTodo=await Todo.findById(id)
+    res.status(200).json(updatedTodo)
 }
 catch(error){
     console.log(error.message);
     res.status(500).json({ message: error.message });
 }
+})
+
+//delete todo
+app.delete("/todo/:id",async(req,res)=>{
+    try{
+        const {id}=req.params;
+        const todo=await Todo.findByIdAndDelete(id);
+        if(!todo)
+        {
+            return res.status(404).json({message:`cannot find any todo with id ${id}`})
+        }
+        res.status(200).json(todo)
+    }
+    catch(error)
+    {
+        console.log(error.message);
+    res.status(500).json({ message: error.message });
+    }
 })
 
 const PORT = process.env.PORT || 5000;
