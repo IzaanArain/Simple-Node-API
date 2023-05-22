@@ -24,7 +24,7 @@ const todoSchema = mongoose.Schema(
       requied: false,
     },
     contact: {
-      type: Number,
+      type: String,
       requied: false,
     },
     country: {
@@ -40,7 +40,7 @@ const todoSchema = mongoose.Schema(
       type: String,
     },
     date: {
-      type: Number,
+      type: String,
     },
   },
   {
