@@ -19,7 +19,7 @@ app.use(express.urlencoded({extended:false}))
 //   res.send(`<h1>hello world ${req.params.id}</h1>`);
 // });
 
-//get all todos
+//@ get all todos
 app.get("/todo", async (req, res) => {
   try {
     const todos=await Todo.find({})//empty curly brackets will get all data
@@ -30,7 +30,7 @@ app.get("/todo", async (req, res) => {
   }
 });
 
-//get todo by id
+//@ get todo by id
 app.get("/todo/:id",async(req,res)=>{
     try{
         const {id}=req.params
@@ -43,7 +43,7 @@ app.get("/todo/:id",async(req,res)=>{
     }
 })
 
-//adding todo to database 
+//@ adding todo to database 
 app.post("/todo", async (req, res) => {
   // console.log(req.body)
   // res.send(req.body)
@@ -58,7 +58,7 @@ app.post("/todo", async (req, res) => {
   }
 });
 
-// update todo by id
+//@ update todo by id
 app.put("/todo/:id",async(req,res)=>{
 try{
     const {id}=req.params
@@ -76,7 +76,7 @@ catch(error){
 }
 })
 
-//delete todo by id
+//@ delete todo by id
 app.delete("/todo/:id",async(req,res)=>{
     try{
         const {id}=req.params;
@@ -99,7 +99,7 @@ const PORT = process.env.PORT || 5000;
 //     console.log(`server running on http://localhost:${PORT}`)
 // })
 
-//mongoose database connection & running and listening on PORT 
+// mongoose database connection & running and listening on PORT 
 mongoose
   .connect(
     "mongodb+srv://admin:admin@dev-izaan-cluster.8rnz3o6.mongodb.net/Node-API?retryWrites=true&w=majority"
