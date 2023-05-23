@@ -19,7 +19,7 @@ app.use(express.urlencoded({extended:false}))
 //   res.send(`<h1>hello world ${req.params.id}</h1>`);
 // });
 
-//get all data
+//get all todos
 app.get("/todo", async (req, res) => {
   try {
     const todos=await Todo.find({})//empty curly brackets will get all data
@@ -30,7 +30,7 @@ app.get("/todo", async (req, res) => {
   }
 });
 
-//get data by id
+//get todo by id
 app.get("/todo/:id",async(req,res)=>{
     try{
         const {id}=req.params
@@ -43,7 +43,7 @@ app.get("/todo/:id",async(req,res)=>{
     }
 })
 
-//adding data to database 
+//adding todo to database 
 app.post("/todo", async (req, res) => {
   // console.log(req.body)
   // res.send(req.body)
@@ -58,7 +58,7 @@ app.post("/todo", async (req, res) => {
   }
 });
 
-// update by id
+// update todo by id
 app.put("/todo/:id",async(req,res)=>{
 try{
     const {id}=req.params
