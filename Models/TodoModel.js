@@ -4,11 +4,11 @@ const todoSchema = mongoose.Schema(
   {
     fname: {
       type: String,
-      requied: [true, "Please Enter first name"],
+      required: [true, "Please Enter first name"],
     },
     lname: {
       type: String,
-      requied: [true, "Please Enter last name"],
+      required: [true, "Please Enter last name"],
     },
     email: {
       type: String,
@@ -21,7 +21,7 @@ const todoSchema = mongoose.Schema(
     },
     duration: {
       type: Number,
-      requied: false,
+      required: false,
     },
     contact: {
       type: String,
