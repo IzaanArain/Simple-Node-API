@@ -99,6 +99,7 @@ const PORT = process.env.PORT || 5000;
 //     console.log(`server running on http://localhost:${PORT}`)
 // })
 
+//mongoose database connection & running and listening on PORT 
 mongoose
   .connect(
     "mongodb+srv://admin:admin@dev-izaan-cluster.8rnz3o6.mongodb.net/Node-API?retryWrites=true&w=majority"
